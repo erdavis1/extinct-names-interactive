@@ -157,7 +157,7 @@ $effect(() => {
 </div>
 
   <LayerCake
-      padding={{ top: 8, right: 10, bottom: 20, left: 35 }}
+      padding={{ top: 8, right: 40, bottom: 20, left: 35 }}
       x={xKey}
       y={yKey}
       yDomain={[0, null]}
@@ -235,9 +235,9 @@ $effect(() => {
 }
 
 .chart-container {
-  width: 45%;
+  width: 100%;
   height: 350px;
-
+  font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .header {
