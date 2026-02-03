@@ -1,4 +1,5 @@
 <script>
+  export const prerender = true;
 import { LayerCake, Svg,Html } from 'layercake';
  import { derived } from 'svelte/store';
  import {onMount, tick} from 'svelte';
