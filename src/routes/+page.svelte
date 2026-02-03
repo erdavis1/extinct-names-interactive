@@ -22,9 +22,10 @@ const yKey = 'n_surviving';
 const nameOptions= 
   [...new Set(rawData.map(d => d.name))]
   .sort((a, b) => a.localeCompare(b))
-  .map(name => ({ value: name, label: name }));
+  .map(name => ({ value: name, label: name, group: name[0].toUpperCase()}));
 
-let selectedValue = $state({ value: 'Gary', label: 'Gary' });
+let selectedValue = $state({ value: 'Gary', label: 'Gary',group: 'G' });
+const groupBy = (item) => item.group;
 
 //selected name to show
 let filterName = $derived(selectedValue.value);
@@ -144,6 +145,7 @@ $effect(() => {
         <Select
           items={nameOptions}
           itemId="value"
+        groupBy={groupBy}
           bind:value={selectedValue}
         />
     </span>
