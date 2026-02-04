@@ -85,7 +85,8 @@ let annotations = $derived(() => [
         dx: 0,
         dy: -35,
         color: '#7f3e3a',
-        plot: true
+        plot: true,
+        outline: true,
     },
     {
         text: '2024',
@@ -95,7 +96,8 @@ let annotations = $derived(() => [
         dx: 10,
         dy: -20,
         color: '#7f3e3a',
-        plot: maxYear <= 2015
+        plot: maxYear <= 2015,
+         outline: true,
     },
     {
         text: '2050',
@@ -105,7 +107,8 @@ let annotations = $derived(() => [
         dx: 10,
         dy: -15,
         color: '#231f20',
-        plot: true
+        plot: true,
+         outline: true
     }
 ]);
 
@@ -145,7 +148,7 @@ $effect(() => {
         <Select
           items={nameOptions}
           itemId="value"
-        groupBy={groupBy}
+          groupBy={groupBy}
           bind:value={selectedValue}
         />
     </span>
@@ -158,6 +161,14 @@ $effect(() => {
 
   <p class = "header-minor">ALIVE IN THE UNITED STATES</p>
 </div>
+
+<div class = "dek">
+  Estimated via census records, baby name data, and actuarial life tables. 
+  Does not include migration. 
+  Future estimates use projected birth rates and assume the share of babies named 
+  {selectedValue?.label ?? ' '} stays at the average 2020-2024 rate.
+</div>
+
 
   <LayerCake
       padding={{ top: 8, right: 40, bottom: 20, left: 35 }}
@@ -243,8 +254,9 @@ $effect(() => {
   font-size: clamp(14px, 2.5vw, 16px);
 }
 
+
 .header {
-  padding-bottom: 3rem;
+  padding-bottom: 0.5rem;
 }
 
 .header-minor {
@@ -298,6 +310,19 @@ $effect(() => {
   font-size: 1em;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+
+.dek {
+  padding-bottom: 3rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 0.75em;
+  font-weight: 400;
+  font-style: italic;
+  color: #696360;
+  text-align: center;
 }
 
 

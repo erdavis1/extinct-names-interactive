@@ -48,6 +48,7 @@
     {#if d.plot === true}
         <div
             class="layercake-annotation"
+            class:outline={d.outline === true}
             data-id={i}
             style="color: {d.color}; 
             left: calc({$xGet(d)}{units} + {d.dx || 0}px); 
@@ -66,12 +67,15 @@
 <style>
   .layercake-annotation {
     position: absolute;
-     font-family: 'Libre Franklin', sans-serif; 
-     font-weight: 500;
+    font-family: 'Libre Franklin', sans-serif; 
+    font-weight: 500;
     font-size: 0.8em;
-     text-shadow: 0 0px 2px rgb(238 232 220 / 90%), 0 0px 4px rgb(238 232 220 / 90%), 0 0px 4px rgb(238 232 220 / 90%), 0 0px 3px rgb(238 232 220 / 90%), 0 0px 3px rgb(238 232 220 / 90%);
+  }
+
+.outline {
+  text-shadow: 0 0px 2px rgb(238 232 220 / 90%), 0 0px 4px rgb(238 232 220 / 90%), 0 0px 4px rgb(238 232 220 / 90%), 0 0px 3px rgb(238 232 220 / 90%), 0 0px 3px rgb(238 232 220 / 90%);
    
-   }
+}
 
     .subtext {
     font-weight: 400;
