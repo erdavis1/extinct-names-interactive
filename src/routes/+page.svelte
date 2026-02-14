@@ -36,6 +36,25 @@ let filteredData = $derived(
   )
 );
 
+//colors of stuff
+let typicalSex = $derived(
+  filteredData?.[0]?.sex
+);
+
+let fillColor = $derived(
+  typicalSex === "M" ? "#c97b6a" : "#ba989a"
+);
+
+let lineColor = $derived(
+  typicalSex === "M" ? "#aa5f56" : "#966f7f"
+);
+
+let accentColor = $derived(
+  typicalSex === "M" ? "#7f3e3a" : "#5e3c4d"
+);
+
+
+
 
 // maxY: the maximum y value for filteredData where x <= 2024
 let maxY = $derived(
@@ -84,7 +103,7 @@ let annotations = $derived(() => [
         [yKey]: maxY,
         dx: 0,
         dy: -35,
-        color: '#7f3e3a',
+        color: accentColor,
         plot: true,
         outline: true,
     },
@@ -95,7 +114,7 @@ let annotations = $derived(() => [
         [yKey]: currentPoint,
         dx: 10,
         dy: -20,
-        color: '#7f3e3a',
+        color: accentColor,
         plot: maxYear <= 2015,
          outline: true,
     },
@@ -144,6 +163,7 @@ $effect(() => {
   <p class = "header-minor">ESTIMATED NUMBER OF</p>
   <div class="header-main">
     PEOPLE NAMED&nbsp;
+
       <span class="headline-select" bind:this={selectContainer} style="width: {selectWidth};">
         <Select
           items={nameOptions}
@@ -191,12 +211,12 @@ $effect(() => {
       <!-- Historical -->
       <Line 
         defined={d => d.series === 'historical'}  
-        stroke = '#AA5F54'
+        stroke = {lineColor}
         dashed = {false}
       />
       <Area 
         defined={d => d.series === 'historical'}  
-        fill = "#C97B6A"
+        fill = {fillColor}
         opacity={.65}
       />
       <!-- Projected -->
@@ -215,7 +235,7 @@ $effect(() => {
       <Point 
           defined={d => d.flag === 'max' || (d[xKey] === 2024 && maxYear <= 2015)} 
           r={5} 
-          fill="#7d3d38"  strokeWidth = 2
+          fill={accentColor}  strokeWidth = 2
       />
       <Point 
           defined={d => d[xKey] === 2050} 
@@ -262,7 +282,7 @@ $effect(() => {
 .header-minor {
   font-family: 'Libre Caslon Text', serif;
   font-weight: 300;
-  font-size: 0.7em;
+  font-size: 0.9em;
   margin: 0;
   color: #4a4645;
   text-align: center;
@@ -274,7 +294,7 @@ $effect(() => {
   justify-content: center; 
   font-family: 'Libre Caslon Text', serif;
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin: 0;
   color: #383634;
 
@@ -318,7 +338,7 @@ $effect(() => {
   padding-left: 5rem;
   padding-right: 5rem;
   font-family: 'Libre Caslon Text', serif;
-  font-size: 0.75em;
+  font-size: 0.85em;
   font-weight: 400;
   font-style: italic;
   color: #696360;

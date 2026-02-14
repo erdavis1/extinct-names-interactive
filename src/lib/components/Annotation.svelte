@@ -33,7 +33,7 @@
   let { annotations,
     getText = d => d.text, 
     getSubText = d => d.subtext,
-    color='#000000',
+    color='#ff0000',
      pr = $percentRange } = $props();
 
   let units = $derived(pr === true ? '%' : 'px');
